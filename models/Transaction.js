@@ -39,6 +39,10 @@ const transactionSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    voiceNote: {
+     type: String,
+     default: null,
+  },
   },
   { timestamps: true }
 );
