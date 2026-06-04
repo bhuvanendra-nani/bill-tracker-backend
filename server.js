@@ -22,7 +22,9 @@ const allowedOrigins = [
   "https://bill-tracker-peach-ten.vercel.app",
 
 ];
-
+const peopleRoutes = require(
+  "./routes/peopleRoutes"
+);
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -50,7 +52,10 @@ app.get("/", (req, res) => {
     message: "Bill Tracker API Running",
   });
 });
-
+app.use(
+  "/api/people",
+  peopleRoutes
+);
 app.use("/api/voice", require("./routes/voiceRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/transactions", require("./routes/transactionRoutes"));
