@@ -150,7 +150,7 @@ router.post(
     try {
 const {
   title,
-  personName,
+  
   amount,
   type,
   category,
@@ -187,8 +187,8 @@ const {
       const transaction =
         await Transaction.create({
           user: req.user._id,
-          title,
-          personName,
+          Name,
+          
           amount,
           type,
           category,
@@ -226,7 +226,7 @@ router.put(
     try {
       const {
         title,
-        personName,
+        
         amount,
         type,
         category,
@@ -268,9 +268,7 @@ router.put(
         title ??
         existingTransaction.title;
 
-      existingTransaction.personName =
-        personName ??
-        existingTransaction.personName;
+      
 
       existingTransaction.amount =
         amount ??
