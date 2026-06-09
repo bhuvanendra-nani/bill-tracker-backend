@@ -7,7 +7,7 @@ const transactionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    
+
     title: {
       type: String,
       required: true,
@@ -81,7 +81,4 @@ transactionSchema.set("toJSON", {
   },
 });
 
-module.exports = mongoose.model(
-  "Transaction",
-  transactionSchema
-);
+module.exports = mongoose.model("Transaction", transactionSchema);

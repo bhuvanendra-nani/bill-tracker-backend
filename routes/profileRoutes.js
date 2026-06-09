@@ -11,15 +11,15 @@ router.get("/", authMiddleware, async (req, res) => {
 
 router.put("/", authMiddleware, async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { title, email, password } = req.body;
 
     const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (name !== undefined) user.name = name;
-    if (email !== undefined) user.email = email.toLowerCase();
+    if (title !== undefined) user.title = title;
+    if (email !== undefined) user.email = email.toLowerCase().trim();
 
     if (password && password.trim()) {
       user.password = await bcrypt.hash(password, 10);

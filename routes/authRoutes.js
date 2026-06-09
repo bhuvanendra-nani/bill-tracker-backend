@@ -14,9 +14,9 @@ const createToken = (user) => {
 
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { title, email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!title || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      name,
+      title: title,
       email: email.toLowerCase(),
       password: hashedPassword,
     });

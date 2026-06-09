@@ -9,6 +9,7 @@ const path = require("path");
 dotenv.config();
 
 const connectDB = require("./config/db");
+const peopleRoutes = require("./routes/peopleRoutes");
 
 const app = express();
 
@@ -20,11 +21,8 @@ const allowedOrigins = [
   "http://127.0.0.1:5174",
   "http://127.0.0.1:5175",
   "https://bill-tracker-peach-ten.vercel.app",
-
 ];
-const peopleRoutes = require(
-  "./routes/peopleRoutes"
-);
+
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -52,10 +50,8 @@ app.get("/", (req, res) => {
     message: "Bill Tracker API Running",
   });
 });
-app.use(
-  "/api/people",
-  peopleRoutes
-);
+
+app.use("/api/people", peopleRoutes);
 app.use("/api/voice", require("./routes/voiceRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/transactions", require("./routes/transactionRoutes"));
